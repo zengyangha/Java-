@@ -7,28 +7,31 @@
 - 任何有函数式接口（有且只有一个抽象方法的接口，可用@FunctionalInterface验证）的地方都可以使用
 
 ## java提供一系列函数式接口，用来接受后续传入的逻辑，但对输入和输出有要求：
-- Supplier  代表一个输出
-- Consumer  代表一个输入
-- BiConsumer  代表两个输入
-- Function  代表一个输入，一个输出（一般输入和输出是不同类型的）
-- UnaryOperator  一个输入一个输出，（输出和输出是相同类型的）
-- BiFunction  两个输入，一个输出（不同类型的）
-- BiUnaryOperator  两个输入一个输出，（输出和输出是相同类型的）
+- Supplier《T》  代表一个没有输入参数但有输出的函数
+- Consumer《T》  代表一个有输入参数但没有输出的函数
+- Function《T,R》  代表一个输入参数和一个输出参数的函数，输入和输出类型可以不同,其中，X代表该接口的输入类型，Y代表输出类型
+- UnaryOperator《T》  一个输入参数和一个输出参数的函数，且输入和输出类型相同
+- BiConsumer《T,U》  代表两个输入参数但没有输出的函数
+- BiFunction《T,U,R》  两个输入参数和一个输出参数的函数，输入和输出类型可以不同
+- BinaryOperator《T》  代表两个输入参数和一个输出参数的函数，且输入和输出类型相同。
 
 ## （）里的是对应参数，-》指的是逻辑代码，多行逻辑代码时用{}，{}内一定要加；
 
 ## 方法引用：（用来直接访问类或实例的已存在的方法（或者构造方法））
-- 静态方法    类名：：static Method
-- 实例方法引用    inst：：inst Method
-- 对象方法引用  类名：：inst Method
-- 构造方法引用   类名：：new  
+- 静态方法    ClassName：：static Method
+- 实例方法引用    ClassName：：MethodName
+- 对象方法引用  instance：：MethodName
+- 构造方法引用   ClassName：：new  
 
 ## Stream  API
-- Steam时一组用来处理数组、集合的API（方便），使用Steam接口可以告别for循环，同时可并行程序
+- Steam是一组用来处理数组、集合的API（方便），使用Steam接口可以告别for循环，同时可并行程序
 - 特性：
 	- 1、不是数据结构，没有内部存储
 	- 2、不支持索引访问
-	- 3、延迟计算，只有取结果时才会执行steam中的操作
+	- 3、延迟计算（惰性求值），只有取结果时才会执行steam中的操作
+		- 惰性求值：
+			- 中间操作：如filter、map等操作是返回流本身，是记录操作而不会真正执行
+			- 终端操作：如collect、forEach、findFist等操作才会触发流运算，在终端操作调用时，积累的中间操作才会按需进行执行
 	- 4、支持并行
 	- 5、生成数组和集合简单
 	- 5、支持过滤（filter）、查找、转换、汇总、汇聚等操作
