@@ -1,0 +1,49 @@
+## 点此回到[[IO]]
+- 字节流
+	- InputStream
+		- ByteArrayInputStream
+		- PipedInputStream
+		- FilterInputStream
+			- BufferInputStream
+			- DataInputStream
+				- 从文件中读取二进制数据
+				- 从网络连接中接收数据
+				- 读取数据以进行反序列化或进一步处理
+		- FileInputStream
+			- 每次读取一个字节
+			- 用于读取原始的字节数据，适用于二进制文件（如图像、音频、视频）
+		- ObjiectInputStream
+			- 以读取先前使用 ObjectOutputStream序列化的对象，并将其转换回原始的 Java 对象
+			- 通过将对象序列化为字节流并将其写入文件，可以在需要时将其重新加载到内存中，实现对象的持久化存储和恢复
+			- 网络通信中，可以使用 ObjectInputStream和ObjectOutputStream将对象序列化并通过网络发送，然后在接收端反序列化对象，实现对象的传输
+	- OutputStream
+		- ByteArrayOutputStream
+		- PipedOutputStream
+		- FilterOutputStream
+			- BufferOutputStream
+			- DataOutputStream
+				- 将数据以二进制写入文件
+				- 在网络传输中发送数据
+				- 数据持久化和存储
+			- PrintStream
+		- FileOutputStream
+		- ObjiectOutputStream
+- 字符流
+	- Reader
+		- CharArrayReader
+		- PipedReader
+		- FilterReader
+		- BufferedReader
+			- 读取到最后返回null而不是-1
+		- InputStreamReader
+			- FileReader 
+				- 有默认字节缓冲区
+	- Writer
+		- CharArrayWriter
+		- PipedWriter
+		- FilterWriter
+		- BufferedWriter
+		- OutputStreamWriter
+			- FileWriter
+			- 有默认字节缓冲区，如果未调用close方法，数据只是保存到了缓冲区，并未写出到文件中
+		- PrintWriter
