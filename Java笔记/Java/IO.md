@@ -44,12 +44,14 @@
 
 ## 注意点：
 - 在遍历所有文件时，有些是系统文件受保护或者该文件已被占用等情况时，遍历会出现空指针异常
-- buffer是缓冲的意思
+- buffer是缓冲的意思，有特有的方法，
 - flush是强制数据刷新，建议输出流都带有
 - 创建流后相当于源数据和目的数据上建议连接，需要占用一定的系统资源
-- 每次使用完流后依次关闭流
-- 字节流是万能的
+- 每次使用完流后依次关闭流utf8的格式，要用转换流
+	- InputStreamRead xxx =new InputStreamReader(new FileInput(" lujing"),"GBK"),接受GBK格式的文件，在输出时再用new OutputStreamWriter(new FileOutputStream("lujin")),这里默认utf8
+- 字节流是万能的,但遇到中文字符或者其他非
 - 关闭原则：先开的后关，后开的先关
+- flush方法，**BufferedOutputStream** 和 **BufferedWriter**，**OutputStreamWriter** 和 **FileWriter**，**PrintStream** 和 **PrintWriter**，**PipedOutputStream** 和 **PipedWriter**，一般需要在写入完成后调用，以确保缓冲区中的数据被写入到最终的输出目的地，如果用try-catch则不需要
 
 
 
