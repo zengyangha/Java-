@@ -9,6 +9,8 @@
 ## 不可变字符序列：String，（这里的不可变指字符串中，数组的引用不可变，即value【】不可变，value【】指向的堆地址不可变，，堆的值是可变的）
 - String是特殊终结（finally）类，是个常量，不允许修改内容，值创建后不可改变，之所以之前重复赋值，其实是一直在开辟空间然后修改引用地址
 - String直接赋值，是在常量池（方法区中），new 对象出来的是放在堆中，每new一个都会有不同地址，使用concat（）方法也是开辟新空间，除非用s1=s1.concat（“xx”）；覆盖原地址
+- string实现了Comparable接口，可对字符串进行自然排序
+- string类提供方法可以用于正则表达式
 
 
 ## 可变字符序列：（这两个的API都一样的，所以语法一致），一下修改都是修改本身，而不是新开辟内存空间
@@ -49,3 +51,32 @@
 - split(    ，  ):可以把字符串内容按照指定的字符拆分成一个字符串类型的数组，返回的是一个字符串类型的数组
 - subString():截取字符串中配合s1。indexOf("x")+1来指定的内容也可以subString( indexOf("x")   ，indexOf("x")+2 )；包括开头单不包括结束的下标
 - trim():可以去掉字符串两边的空格
+
+## 字符串常量池
+- JVM创建一个新常量时会先在字符串常量池中检擦是否有这个字符串，如果有，就会**返回**池中的引用地址，如果创建的是对象，则复制改字符串在堆中复制为对象，
+
+
+## String类特有的方法
+- charAt(int index)    返回指定索引处的字符。
+- codePointAt(int index)   返回指定索引处的字符的 Unicode 代码点
+- codePointBefore(int index)    返回指定索引之前的字符的 Unicode 代码点
+- compareTo(String anotherString)    按字典顺序比较两个字符串
+- compareToIgnoreCase(String str)    按字典顺序比较两个字符串，不区分大小写
+- concat(String str)   将指定字符串连接到此字符串的结尾
+- contains(CharSequence s)    判断此字符串是否包含指定的字符序列
+- endsWith(String suffix)    判断此字符串是否以指定的后缀结束
+- equalsIgnoreCase(String anotherString)   将此字符串与另一个字符串进行比较，不区分大小写
+- getBytes()    使用平台的默认字符集将此字符串编码为字节序列，并将结果存储到新的字节数组中
+- indexOf(int ch)    返回指定字符第一次出现的索引
+- replace(char oldChar, char newChar)
+- replaceAll(String regex, String replacement
+- split(String regex)
+- startsWith(String prefix)
+- substring(int beginIndex, int endIndex)   包前不包后
+- toCharArray()    将此字符串转换为一个新的字符数组
+- toLowerCase()    转小写
+- toUpperCase()
+- trim()  返回boolean参数的字符串表示形式
+- valueOf(char c)   返回 `char` 参数的字符串表示形式
+- valueOf(char【】 data)    返回字符数组参数的字符串表示形式
+- valueOf(double d)
