@@ -11,8 +11,8 @@
 - Key  无序，唯一
 - Value  无序，不唯一
 - Key和Value允许为空，数据类型都为Object
-- 底层结构为Hash表（一个动态数组）
-- 在jdk1.7中，HashMap的数据结构为数据+链表，在jdk1.8后HashMap的数据结构为数据+链表+红黑树，（在1.8中，如果链表大于等于7，自动转换红黑树，节点叫Node类）
+- 底层结构为Hash表（一个动态**数组**）
+- 底层原理是hashing，在jdk1.7中，HashMap的数据结构为数据+链表，在jdk1.8后HashMap的数据结构为数据+链表+红黑树，（在1.8中，如果链表大于等于7，自动转换红黑树，节点叫Node类）
 - 线程不安全，效率高
 - 在用Object来存储map.put（）时，返回的是null，因为put方法返回的就是null，如果成功put，则成功返回null，如果是重复的键，则返回第一个出现的重复的键的值，即返回的是旧值 
 - 方法
@@ -27,19 +27,22 @@
 	- valuses  值得集合
 	- clear 清空
 	- String key = String.valueOf(i) 返回一个String或者其他类型的键
-	- 
+- LinkedHashMap
+	- 相当于有序的HashMap，是HashMap的子类，多了个双向链表结构，这个链表可以按照元素的插入顺序或访问顺序进行排序，（有序，插入顺序），还会记录插入顺序
+
+## [[HashMap的相关考点]]
 
 ## Hashtable
 - 线程安全，效率低
 - Key和Value都  不 可允许为空
 - 继承的父类和HashMap不一样
 
-## LinkedHashMap
-- 相当于有序的HashMap，多了个双向链表结构，这个链表可以按照元素的插入顺序或访问顺序进行排序，（有序，插入顺序）
+## LinkedHashSet，继承HashSet，又基于LinkedHashMap来实现，底层是LinkedHashMap
 
 ## TreeMap
 - 红黑树结构
 - 有序，但没HashMap快，都不允许为空
+- 线程安全
 
 ## Map和Set的关系
 - 采用相同的数据结构，哈希表
